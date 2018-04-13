@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center|top"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:text="Enter Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:hint="Write something here"
+        android:id="@+id/task_title_et"
+        android:layout_gravity="center"
+        android:gravity="center|top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:text="Enter Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:hint="Write something here"
+        android:id="@+id/task_desc_et"
+        android:layout_gravity="center"
+        android:gravity="center|top"
+        android:layout_width="match_parent"
+        android:layout_height="80dp" />
+
+    <Spinner
+        android:spinnerMode="dialog"
+        android:layout_gravity="center"
+        android:id="@+id/priority_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Spinner>
+    <TextView
+        android:text="test priority"
+        android:id="@+id/prio_helper_tv"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:background="#93ff2b20"
+            android:layout_marginRight="60dp"
+            android:layout_weight="1"
+            android:id="@+id/cancel_btn"
+            android:text="cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:background="#82ea90"
+            android:layout_weight="1"
+            android:id="@+id/save_btn"
+            android:text="save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>
