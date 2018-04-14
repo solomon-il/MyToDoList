@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.Date;
-
 public class DBUtil extends SQLiteOpenHelper{
 
     public static final String DATA_NAME = "to_do.db";
@@ -33,7 +31,7 @@ public class DBUtil extends SQLiteOpenHelper{
 
     }
 
-    public boolean saveToSql(String title, String desc, String prio) {
+    public long saveToSql(String title, String desc, String prio) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(TITLE, title);
@@ -41,14 +39,30 @@ public class DBUtil extends SQLiteOpenHelper{
         cv.put(PRIO, prio);
         cv.put(DATE, System.currentTimeMillis());
         cv.put(COMPLETED, 0);
+
         long result = db.insert(TABLE_NAME, null, cv);
-        if(result == -1) return false;
-        return true;
+        return result;
     }
 
     public Cursor getData() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(SELECTALL, null);
         return cursor;
+    }
+
+    public long updateComp(long id, boolean complete) {
+        ContentValues cv = new ContentValues();
+        if(complete) cv.put(COMPLETED, 1);
+        else cv.put(COMPLETED, 0);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.update(TABLE_NAME, cv, ID+ "="+ id, null);
+        return result;
+    }
+
+    public int deleteRow(long id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete(TABLE_NAME, ID+ "="+ id, null);
+        return result;
     }
 }
